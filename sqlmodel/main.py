@@ -24,13 +24,22 @@ from typing import (
     cast,
 )
 
-from pydantic import BaseConfig, BaseModel
-from pydantic.errors import ConfigError, DictError
-from pydantic.fields import SHAPE_SINGLETON, ModelField, Undefined, UndefinedType
-from pydantic.fields import FieldInfo as PydanticFieldInfo
-from pydantic.main import ModelMetaclass, validate_model
-from pydantic.typing import NoArgAnyCallable, resolve_annotations
-from pydantic.utils import ROOT_KEY, Representation
+try:
+    from pydantic.v1 import BaseConfig, BaseModel
+    from pydantic.v1.errors import ConfigError, DictError
+    from pydantic.v1.fields import SHAPE_SINGLETON, ModelField, Undefined, UndefinedType
+    from pydantic.v1.fields import FieldInfo as PydanticFieldInfo
+    from pydantic.v1.main import ModelMetaclass, validate_model
+    from pydantic.v1.typing import NoArgAnyCallable, resolve_annotations
+    from pydantic.v1.utils import ROOT_KEY, Representation
+except ImportError:
+    from pydantic import BaseConfig, BaseModel
+    from pydantic.errors import ConfigError, DictError
+    from pydantic.fields import SHAPE_SINGLETON, ModelField, Undefined, UndefinedType
+    from pydantic.fields import FieldInfo as PydanticFieldInfo
+    from pydantic.main import ModelMetaclass, validate_model
+    from pydantic.typing import NoArgAnyCallable, resolve_annotations
+    from pydantic.utils import ROOT_KEY, Representation
 from sqlalchemy import (
     Boolean,
     Column,

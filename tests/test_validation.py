@@ -1,8 +1,12 @@
 from typing import Optional
 
 import pytest
-from pydantic import validator
-from pydantic.error_wrappers import ValidationError
+try:
+    from pydantic.v1 import validator
+    from pydantic.v1.error_wrappers import ValidationError
+except ImportError:
+    from pydantic import validator
+    from pydantic.error_wrappers import ValidationError
 from sqlmodel import SQLModel
 
 
